@@ -5,8 +5,19 @@ public class CityClient {
 
     public static void main(String [] args) {
 
+        //this doesn't work bc getName() is an instance method
+        //which can only be called from an object, not the class
+        //System.out.println(City.getName());
+
+        System.out.println("number of cities: " + City.numCities);
+
+
+
         City c1 = new City("uhhhhhh", "brazillian", 5);
 //        City c1 = new City();
+
+        System.out.println("number of cities: " + City.numCities);
+
 
         //if you don't define a constructor, a default no-param
         //constructor is available to use
@@ -24,6 +35,8 @@ public class CityClient {
         System.out.println();
 
         City c2 = new City("los angeles", "brazillian", 1);
+        System.out.println("number of cities: " + City.numCities);
+
         System.out.println(c2.getName());
 
         System.out.println(c2.getLockdown());
@@ -55,6 +68,8 @@ public class CityClient {
         cities[0] = c1;
         cities[1] = c2;
         cities[2] = new City("new york city", "new yorkian", 2);
+        System.out.println("number of cities: " + City.numCities);
+
 
         //for loop to iterate through the array
         for (int i = 0; i < cities.length; i++) {
@@ -88,7 +103,17 @@ public class CityClient {
             }
         }
 
+        //static variables are accessible from the class and all
+        //objects of the class
+        //-they all share the same current value
+        System.out.println("number of cities: " + City.numCities);
+        System.out.println("number of cities: " + c1.numCities);
+        System.out.println("number of cities: " + c2.numCities);
+        System.out.println("number of cities: " + cities[2].numCities);
 
 
+        //static methods (incl main) can be called
+        //from other classes
+        PandaClient.main(args);
     }
 }

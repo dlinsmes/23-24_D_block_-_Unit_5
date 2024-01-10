@@ -13,6 +13,12 @@ public class City {
     private int population;
     private boolean lockdown;
 
+    //-static means the variable or method belongs to
+    //the whole class, not one specific object/instance
+    //-non-static means that the variable or method belongs
+    //to one specific object
+    static int numCities = 0;
+
     //constructor is used to instantiate (create) an
     // object from another class
     public City(String name, String lang, int pop) {
@@ -27,6 +33,10 @@ public class City {
         //even though there are only 3 params, a constructor
         //should still initialize all variables
         lockdown = false;
+
+        //every time the constructor
+        //is called, this value goes up
+        numCities++;
     }
 
     //accessor methods aka get methods aka getters
