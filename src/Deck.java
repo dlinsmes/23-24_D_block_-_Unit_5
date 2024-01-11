@@ -7,7 +7,10 @@ public class Deck {
     //class
     private Card [] cards;
 
+    private int top;
+
     public Deck() {
+        top = 0;
         //initialize values of all Card
         //objects in the array to be an
         //unshuffled deck
@@ -55,6 +58,13 @@ public class Deck {
             cards[i] = cards[rand];
             cards[rand] = temp;
         }
+    }
+
+    public Card draw() {
+
+        Card topCard = cards[top];
+        top++;
+        return topCard;
     }
 
 
