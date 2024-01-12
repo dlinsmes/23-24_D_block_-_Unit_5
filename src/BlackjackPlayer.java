@@ -27,14 +27,43 @@ public class BlackjackPlayer {
         //add to score based on value
         //aces?
 
+        int score = 0;
+        int nAces = 0;
+
         for (int i = 0; i < hand.size(); i++) {
             Card current = hand.get(i);
             int val = current.getValue();
             //equivalent to:
             int value = hand.get(i).getValue();
 
+            if (value >=2 && value <= 10)
+                score += value;
+            if (value >= 11)
+                score += 10;
+            if (value == 1)
+                nAces++;
         }
 
-        return 0;
+        //at most, one ace counts for 11, the rest count for 1
+        while (nAces > 1) {
+            score++;
+            nAces--;
+        }
+
+        //if there's one ace, figure out if it should be 11 or 1
+        //based on the rest of the score
+        if (nAces == 1) {
+            if (score <= 10)
+                score += 11;
+            else
+                score++;
+        }
+
+        return score;
+    }
+
+    public String toString() {
+        return "Name: " + name + "\nScore: " + getScore() +
+                "\nHand: " + hand;
     }
 }

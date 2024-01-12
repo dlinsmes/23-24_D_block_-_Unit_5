@@ -84,12 +84,14 @@ public class ArrayLists {
 
         BlackjackPlayer p = new BlackjackPlayer("bill");
         Card c1 = new Card("Spades", 1);
-        Card c2 = new Card("Hearts", 7);
+        Card c2 = new Card("Hearts", 1);
         Card c3 = new Card("Spades", 11);
         p.addCard(c1);
         p.addCard(c2);
         p.addCard(c3);
 
         System.out.println(p.getScore());
+
+        System.out.println(p);
     }
 }
