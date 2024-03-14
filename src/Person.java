@@ -64,4 +64,8 @@ public class Person {
         return name + " is not a very smart " + age + "-year-old person";
     }
 
+    public void setAge(int newAge) {
+        age = newAge;
+    }
+
 }

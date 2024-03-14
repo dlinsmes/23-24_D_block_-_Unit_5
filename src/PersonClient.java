@@ -95,5 +95,113 @@ public class PersonClient {
             System.out.println(people.get(i).getName());
         }
 
+        System.out.println();
+
+        //for-each loop that does the same thing
+        //p will iterate through each object, p is NOT an int (index)
+        for(Person p: people) {
+            System.out.println(p.getName());
+        }
+
+        System.out.println();
+
+        people.add(b);
+        people.add(b);
+        people.add(b);
+
+        //remove all objects from the list using a for loop
+
+        //code goes here
+
+        //when you remove from an arraylist, the indices of all other
+        //elements get shifted so that the indices are [0, size)
+
+//        int origSize= people.size();
+//        for (int i = 0; i < people.size(); i++) {
+//            people.remove(i);
+//            i--;
+//        }
+
+        for (int i = people.size()-1; i >= 0; i--) {
+            people.remove(i);
+        }
+
+        System.out.println(people.size());
+
+        //array of Person objects
+        Person [] personArray;
+
+        personArray = new Person[3];
+
+        //null bc no objects have been saved to the array
+        System.out.println(personArray[0]);
+        System.out.println();
+
+        personArray[0] = b;
+        personArray[1] = c;
+        personArray[2] = new Person("lin");
+
+        //for loop that iterates through personArray to print each object's name
+        for (int i = 0; i < personArray.length; i++) {
+            //for arrays, use brackets instead of.get()
+            System.out.println(personArray[i].getName());
+        }
+
+        System.out.println();
+        for (Person p: personArray) {
+            System.out.println(p.getName());
+
+            //p is a Person object, NOT an int value meant to be indexed
+            //System.out.println(peopleArray[p]);
+        }
+
+        System.out.println();
+        System.out.println(b);
+
+        int num = 100;
+
+        changeAge(b, num);
+
+        //primitive values don't get changed by methods
+        //objects (incl arrays and arrayLists) DO get changed by methods
+        System.out.println("num is: " + num);
+        System.out.println("person's age is: " + b.getAge());
+
+        //these all refer to the same object, NOT different copies of the object
+        //if you make a change through any one of these references (x, y, z, b),
+        //the change is seen through all the other references
+        Person x = b;
+        Person y = b;
+        Person z = y;
+
+        y.setAge(50);
+
+        System.out.println(b.getAge());
+        System.out.println(x.getAge());
+        System.out.println(y.getAge());
+        System.out.println(z.getAge());
+
+
+        //if toString() is removed from Person, these will
+        // all output the same memory location because they
+        //refer to the same object
+        System.out.println(b);
+        System.out.println(x);
+        System.out.println(y);
+        System.out.println(z);
+
+
+        //to make a separate copy that will have independent variables:
+        Person w = new Person(b.getName(), b.getAge(), b.getSmart());
+
+        w.setAge(-50);
+
+        System.out.println(b.getAge());
+        System.out.println(w.getAge());
+    }
+
+    public static void changeAge(Person p, int newAge) {
+        p.setAge(newAge);
+        newAge = -1;
     }
 }
